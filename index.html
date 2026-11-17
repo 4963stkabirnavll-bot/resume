@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content=" - Personal resume and portfolio website"
+  />
+
+  <title> | Resume</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================
+       1. Global Variables
+    ========================== */
+
+    :root {
+  --background: #fffaf7;
+  --surface: #ffffff;
+  --surface-light: #fff1eb;
+
+  --primary: #e99a7c;
+  --secondary: #d77d65;
+
+  --text: #4a3029;
+  --muted: #806b64;
+
+  --border: #f1c2b2;
+  --white: #ffffff;
+
+  --navy: #4a3029;
+  --dark-navy: #321f1a;
+
+  --light-blue: #fff1eb;
+  --very-light-blue: #fffaf7;
+
+  --shadow: 0 12px 35px rgba(125, 72, 55, 0.12);
+  --radius: 18px;
+  --max-width: 1120px;
+}
+/* Light skin, white, and peach theme */
+
+body {
+  background: var(--background);
+  color: var(--text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--navy);
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-links a {
+  color: var(--muted);
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+}
+
+.logo,
+.eyebrow,
+.project-number,
+.project-link,
+.timeline-date {
+  color: var(--primary);
+}
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    #fff1eb,
+    #ffffff
+  );
+}
+
+.profile-card,
+.profile-panel,
+.stat-card,
+.content-card,
+.focus-card,
+.project-card,
+.skill-group,
+.achievement-card {
+  background: var(--surface);
+  border-color: var(--border);
+  box-shadow: var(--shadow);
+}
+
+.profile-avatar,
+.profile-image-wrapper {
+  border-color: var(--primary);
+  background: var(--light-blue);
+}
+
+.button-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: var(--secondary);
+}
+
+.button-outline {
+  background: #ffffff;
+  border-color: var(--border);
+  color: var(--navy);
+}
+
+.button-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.skill-list li {
+  background: var(--light-blue);
+  border-color: var(--border);
+  color: var(--navy);
+}
+
+.achievement-icon,
+.focus-icon {
+  background: var(--light-blue);
+  color: var(--primary);
+}
+
+.timeline {
+  border-left-color: var(--border);
+}
+
+.timeline-item::before {
+  background: var(--primary);
+  border-color: var(--background);
+}
+
+.contact-box {
+  background: linear-gradient(
+    135deg,
+    #fff1eb,
+    #ffffff
+  );
+  border-color: var(--border);
+}
+
+footer {
+  background: var(--dark-navy);
+  color: #f8e9e4;
+}
+    /* =========================
+       2. Reset and Base Styles
+    ========================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top right, rgba(140, 164, 255, 0.12), transparent 28rem),
+        var(--background);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.2;
+    }
+
+    .container {
+      width: min(92%, var(--max-width));
+      margin: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 42px;
+    }
+
+    .eyebrow {
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* =========================
+       3. Navigation Bar
+    ========================== */
+
+    .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+}
+    .nav-content {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      color: var(--primary);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--primary);
+    }
+
+    /* =========================
+       4. Hero Section
+    ========================== */
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      align-items: center;
+      gap: 70px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      color: var(--primary);
+      border: 1px solid rgba(101, 230, 194, 0.35);
+      border-radius: 999px;
+      padding: 8px 15px;
+      margin-bottom: 23px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(3.3rem, 8vw, 6.5rem);
+      letter-spacing: -0.07em;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero-text {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      padding: 13px 21px;
+      font-weight: 700;
+      transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: #07151a;
+    }
+
+    .button-primary:hover {
+      background: #8af1d6;
+    }
+
+    .button-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .button-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .profile-card {
+      position: relative;
+      background: linear-gradient(145deg, var(--surface-light), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: var(--primary);
+      opacity: 0.14;
+      border-radius: 50%;
+      top: -80px;
+      right: -60px;
+    }
+
+    .profile-avatar {
+  width: 125px;
+  height: 125px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+    .profile-card h2 {
+      font-size: 1.8rem;
+      margin-bottom: 7px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+    }
+
+    .profile-details {
+      border-top: 1px solid var(--border);
+      margin-top: 25px;
+      padding-top: 20px;
+    }
+
+    .profile-details p {
+      margin-bottom: 9px;
+      font-size: 0.95rem;
+    }
+
+    .profile-details strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       5. Statistics
+    ========================== */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary);
+    }
+
+    .stat-number {
+      color: var(--primary);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .stat-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* =========================
+       6. About Section
+    ========================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .content-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .content-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    .content-card p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+
+    /* =========================
+       7. Timeline
+    ========================== */
+
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin-left: 10px;
+      padding-left: 30px;
+      border-left: 2px solid var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 42px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      width: 13px;
+      height: 13px;
+      background: var(--primary);
+      border: 4px solid var(--background);
+      border-radius: 50%;
+      left: -38px;
+      top: 5px;
+    }
+
+    .timeline-date {
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-place {
+      color: var(--secondary);
+      margin-bottom: 12px;
+    }
+
+    .timeline-item ul {
+      color: var(--muted);
+      list-style: disc;
+      padding-left: 18px;
+    }
+
+    /* =========================
+       8. Projects
+    ========================== */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+.project-image {
+  width: 100%;
+  height: 170px;
+  margin-bottom: 22px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--surface-light);
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 27px;
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-7px);
+      border-color: var(--secondary);
+    }
+
+    .project-number {
+      color: var(--primary);
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .project-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 13px;
+    }
+
+    .project-card p {
+      flex-grow: 1;
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .project-link {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* =========================
+       9. Skills
+    ========================== */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 27px;
+    }
+
+    .skill-group h3 {
+      margin-bottom: 18px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .skill-list li {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+      padding: 7px 12px;
+      font-size: 0.86rem;
+    }
+
+    /* =========================
+       10. Achievements
+    ========================== */
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .achievement-card {
+      display: flex;
+      gap: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+    }
+
+    .achievement-icon {
+      flex-shrink: 0;
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(101, 230, 194, 0.12);
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+
+    .achievement-card h3 {
+      margin-bottom: 7px;
+    }
+
+    .achievement-card p {
+      color: var(--muted);
+    }
+
+    /* =========================
+       11. Contact
+    ========================== */
+
+    .contact-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 35px;
+      background: linear-gradient(
+        135deg,
+        rgba(101, 230, 194, 0.13),
+        rgba(140, 164, 255, 0.13)
+      );
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      padding: 45px;
+    }
+
+    .contact-box p {
+      max-width: 600px;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-links a {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 16px;
+      color: var(--text);
+      transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* =========================
+       12. Footer
+    ========================== */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* =========================
+       13. Responsive Design
+    ========================== */
+
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 45px;
+      }
+
+      .profile-card {
+        max-width: 500px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .section {
+        padding: 70px 0;
+      }
+
+      .nav-content {
+        min-height: 64px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 16vw, 5rem);
+      }
+
+      .hero-text {
+        font-size: 1rem;
+      }
+
+      .stats-grid,
+      .about-grid,
+      .projects-grid,
+      .skills-grid,
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 30px;
+      }
+
+      .timeline {
+        margin-left: 5px;
+      }
+    }
+
+    /* =========================
+       14. Print Styles
+    ========================== */
+
+    @media print {
+      .navbar,
+      .button-group,
+      .contact-links {
+        display: none;
+      }
+
+      body {
+        background: white;
+        color: black;
+      }
+
+      .section {
+        padding: 30px 0;
+      }
+
+      .content-card,
+      .stat-card,
+      .project-card,
+      .skill-group,
+      .achievement-card,
+      .profile-card,
+      .contact-box {
+        color: black;
+        background: white;
+        border: 1px solid #cccccc;
+        box-shadow: none;
+      }
+
+      .section-description,
+      .content-card p,
+      .project-card p,
+      .achievement-card p,
+      .profile-card p,
+      .stat-card p,
+      .timeline-item ul {
+        color: #444;
+      }
+
+      a {
+        color: black;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-content">
+      <a href="#top" class="logo"></a>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-label">Personal Resume Website</p>
+
+          <h1>
+            Hello, I’m
+            <span>Nishtha Vadalia</span>
+          </h1>
+
+          <p class="hero-text">
+            <p>
+    A business student with interests spanning finance, entrepreneurship
+    and sustainability. Driven by curiosity, a love for learning and the
+    desire to turn ideas into meaningful work.
+</p>
+          </p>
+
+          <div class="button-group">
+            <a href="#contact" class="button button-primary">
+              Contact Me
+            </a>
+
+            <a href="#projects" class="button button-outline">
+              View My Work
+            </a>
+          </div>
+        </div>
+
+        <aside class="profile-card">
+          <div class="profile-avatar">
+  <img src="profile.png.jpg" alt="Profile picture" />
+</div>
+
+          <h2>Nishtha Vadalia</h2>
+          <p>IIM Bangalore BBA DBE student</p>
+
+          <div class="profile-details">
+            <p><strong>Location:</strong> Ahmedabad, India</p>
+            <p><strong>Email:</strong> nishthavadalia15@gmail.com</p>
+            <p><strong>Availability:</strong> Open to opportunities</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">01 / About Me</p>
+          <h2 class="section-title">A little about me.</h2>
+          <p class="section-description">
+            
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="content-card">
+            <h3>My Story</h3>
+
+            <p>
+              <section id="about">
+    
+
+    <p>
+        <section id="about">
+    
+
+    <p>
+        Always curious about how ideas turn into businesses and how the
+        world of finance keeps evolving. Currently pursuing BBA through
+        IIM Bangalore's BBA DBE programme and studying at KSSBM, Ahmedabad.
+        Also a CFA aspirant with a keen interest in finance, economics
+        and business.
+    </p>
+
+    <p>
+        Building something of my own with Melt and Muse Studio, a
+        handcrafted candle brand focused on customised designs,
+        gifting and bringing creative ideas to life. A little bit of
+        creativity, a lot of learning and plenty of entrepreneurial spirit!
+    </p>
+
+    <p>
+        Beyond business, an environment enthusiast and part of
+        Gathering Green, passionate about sustainability, environmental
+        awareness and creating a more conscious future.
+    </p>
+
+    <p>
+        Open to internships and collaborations across finance, business,
+        research, writing and sustainability, with a focus on practical
+        learning and real-world experience.
+    </p>
+</section>
+</p>
+            </p>
+          </article>
+
+          <article class="content-card">
+            <h3>What I Am Looking For</h3>
+
+            <p>
+              <p>
+    Open to internships, collaborations and hands-on opportunities
+    across finance, business, research, writing and sustainability.
+    Particularly interested in experiences that offer practical
+    learning, room to take initiative and the chance to contribute
+    to meaningful projects.
+</p>
+            </p>
+
+            <p>
+              Outside academics or work, I enjoy reading, swimming, talking, and
+              dancing.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+<section class="section" id="education">
+  <div class="container">
+
+    <div class="section-heading">
+      <p class="eyebrow">02 / Education</p>
+      <h2 class="section-title">My education.</h2>
+      <p class="section-description">
+        My academic background and qualifications.
+      </p>
+    </div>
+
+    <!-- All education items must stay inside this timeline -->
+    <div class="timeline">
+
+      <article class="timeline-item">
+        <p class="timeline-date">2026 – Present</p>
+
+        <h3>Bachelors in business administration</h3>
+
+        <p class="timeline-place">
+          IIM Bangalore BBA DBE 
+          
+        </p>
+         <p class="timeline-place">
+          KSSBM Ahmedabad 
+          
+        </p>
+
+         <ul>
+          <li>Studying marketing, finance, business management, etc.</li>
+          <li>Experiencing in Atharv Ranbhoomi IIM indore.</li>
+       <li>Experiencing GU Youth Fest.</li>
+</li>
+        </ul>
+      </article>
+
+      <article class="timeline-item">
+        <p class="timeline-date">[2024] – [2026]</p>
+
+        <h3>Class 12</h3>
+
+        <p class="timeline-place">
+          Navkar Public School
+        </p>
+
+        <ul>
+          <li>Completed studies with 93.33% percentile.</li>
+          <li>Focused on academics as well as public speaking.</li>
+        </ul>
+      </article>
+
+      <article class="timeline-item">
+        <p class="timeline-date">[2014] – [2024]</p>
+
+        <h3>Class 10</h3>
+
+        <p class="timeline-place">
+          St.Kabir School
+        </p>
+
+        <ul>
+          <li>Completed studies with 90.45% percentile.</li>
+          <li>Participation in many interhouse, interschool and national competitions.</li>
+          <li>Elected in STUDENTS COUNCIL as CAPTAIN.</li>
+          <li>Focused on sports, leadership, public speaking and many other skills.</li>
+        </ul>
+      </article>
+
+      
+    </div>
+  </div>
+</section>
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">03 / Experience</p>
+          <h2 class="section-title">Where I have worked.</h2>
+        </div>
+</ul>
+        <div class="timeline">
+          <article class="timeline-item">
+            <p class="timeline-date">[2026] – [Present]</p>
+            <h3>Co-Founder</h3>
+            <p class="timeline-place">Melt and Muse</p>
+
+            <li>
+  Developed and worked on a handcrafted candle brand, focusing on
+  product development, brand positioning, customisation and business
+  opportunities across gifting, weddings and corporate events.
+</li>
+
+<li>
+  Explored customised product collections, creative packaging,
+  brand identity and potential B2B collaborations with event planners,
+  hotels and corporate clients.
+</li>
+
+<li>
+  Developed skills in entrepreneurship, brand management,
+  product strategy, creative thinking, marketing, business
+  communication and customer acquisition.
+</li>
+          </article>
+</ul>
+        <div class="timeline">
+          <article class="timeline-item">
+            <p class="timeline-date">[2024] – [2026]</p>
+            <h3>Intern</h3>
+            <p class="timeline-place">Gathering Green</p>
+
+            <ul>
+    <li>Contributed to sustainability awareness initiatives through content creation, research and environmental communication.</li>
+    <li>Developed skills in content writing, research, creative communication and understanding environmental issues.</li>
+    <li>Gained practical exposure to promoting sustainable practices and engaging audiences with environmental topics.</li>
+            </ul>
+          </article>
+<article class="timeline-item">
+  <p class="timeline-date">[2024] – [2025]</p>
+
+  <h3>Social media marketing and operations</h3>
+
+  <p class="timeline-place">
+    J Fashion - House of fashion fabrics
+  </p>
+
+  <ul>
+    <li>Worked across social media marketing and business operations, supporting brand promotion, customer engagement and day-to-day coordination.</li>
+
+    <li>Contributed to showcasing fabric collections, developing promotional content and coordinating product and order-related activities.</li>
+
+    <li>Developed skills in social media management, content creation, customer communication, inventory coordination and business operations.</li>
+</ul>
+</article>
+          <article class="timeline-item">
+            <p class="timeline-date">[December 2022] – [March 2023]</p>
+            <h3>Business management Intern</h3>
+            <p class="timeline-place">S.Dinesh & Co.</p>
+
+              <ul>
+    <li>Assisted in managing day-to-day business activities, coordinating operations and supporting overall business management.</li>
+
+    <li>Contributed to product organisation, customer coordination, order management and the smooth functioning of business processes.</li>
+
+    <li>Developed skills in business operations, inventory management, communication, problem-solving and operational planning.</li>
+</ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+<section class="section" id="projects">
+  <div class="container">
+
+    <div class="section-heading">
+      <p class="eyebrow">05 / Projects</p>
+
+      <h2 class="section-title">Things I have built.</h2>
+
+      <p class="section-description">
+        A selection of my academic, personal, and practical work.
+      </p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="project-card">
+        
+        <p class="project-number">01</p>
+
+        <h3>J Fashion</h3>
+
+        <p>
+          Building digital presence and driving marketing and business development for a fashion fabric venture.
+        </p>
+
+        <a
+          href="https://github.com/your-username/first-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="project-card">
+        
+        <p class="project-number">02</p>
+
+        <h3>Finance Newsletter</h3>
+
+        <p>
+          Simplifying finance, economics and business trends through engaging content.
+        </p>
+
+        <a
+          href="https://github.com/your-username/second-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="project-card">
+        
+
+        <p class="project-number">03</p>
+
+        <h3>Sustainability Initiatives</h3>
+
+        <p>
+          Exploring environmental awareness, circular economy and sustainable business practices.
+        </p>
+
+        <a
+          href="https://github.com/your-username/third-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="project-card">
+       
+
+        <p class="project-number">04</p>
+
+        <h3>Textile & Accessories Venture</h3>
+
+        <p>
+          Exploring luxury textile products through customised scarves, stoles and accessories.
+        </p>
+
+        <a
+          href="https://github.com/your-username/fourth-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+      <!-- Project 5 -->
+      <article class="project-card">
+        
+        <p class="project-number">05</p>
+
+        <h3>Financial Literacy Research Project</h3>
+
+        <p>
+          Exploring financial awareness through a PESTLE-based research approach.
+        </p>
+
+        <a
+          href="https://github.com/your-username/fifth-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+
+      <!-- Project 6 -->
+      <article class="project-card">
+        
+        <p class="project-number">06</p>
+
+        <h3>Melt and Muse</h3>
+
+        <p>
+          Creating a handcrafted candle brand focused on customised products and premium gifting.
+        </p>
+
+        <a
+          href="https://github.com/your-username/fifth-project"
+          class="project-link"
+          target="_blank"
+          rel="noopener"
+        >
+          View Project →
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">05 / Skills</p>
+          <h2 class="section-title">What I work with.</h2>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-group">
+            <h3>Technical Skills</h3>
+
+            <ul class="skill-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Python</li>
+            </ul>
+          </article>
+
+          <article class="skill-group">
+            <h3>Professional Skills</h3>
+
+            <ul class="skill-list">
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Problem Solving</li>
+              <li>Time Management</li>
+              <li>Leadership</li>
+            </ul>
+          </article>
+
+          <article class="skill-group">
+            <h3>Tools</h3>
+
+            <ul class="skill-list">
+              <li>GitHub</li>
+              <li>VS Code</li>
+              <li>Canva</li>
+              <li>Figma</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <p class="eyebrow">07 / Contact</p>
+            <h2 class="section-title">Let’s connect.</h2>
+
+            <p>
+              I am always open to conversations, collaborations, learning
+              opportunities, and interesting projects.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <a href="mailto:your@email.com">nishthavadalia15@gmail.com</a>
+            <a href="https://www.linkedin.com/" target="_blank">LinkedIn- Nishtha Vadalia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>
+        © 2026 Nishtha Vadalia. Designed and developed using HTML and CSS.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
